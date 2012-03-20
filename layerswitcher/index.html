@@ -106,6 +106,7 @@
       new wax.mm.connector(tilejson));
       wax.mm.zoomer(m, tilejson).appendTo(m.parent);
       interaction = wax.mm.interaction(m, tilejson);
+      wax.mm.attribution(m, tilejson).appendTo(m.parent);
       m.setCenterZoom(new mm.Location(39, -98), 5);
     });
     

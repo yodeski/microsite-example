@@ -73,6 +73,8 @@
       wax.mm.zoomer(m, tilejson).appendTo(m.parent);
       // Add interactivity (tooltips)
       var interaction = wax.mm.interaction(m, tilejson);
+      // Add map attribution
+      wax.mm.attribution(m, tilejson).appendTo(m.parent);
       // Set the initial center and zoom level
       m.setCenterZoom(new mm.Location(39, -98), 5);
     });
