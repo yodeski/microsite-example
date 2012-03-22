@@ -54,6 +54,8 @@ $(function() {
 		wax.tilejson(url, function(tilejson) {
 			delete tilejson.template;
 			tilejson.formatter = formatter;
+			tilejson.minzoom = 4;
+			tilejson.maxzoom = 8;
 			m.setProvider(new wax.mm.connector(tilejson));
 			interaction.remove();
 			interaction = wax.mm.interaction(m, tilejson);
