@@ -6,14 +6,13 @@ wax.mm = wax.mm || {};
 // Show the current cursor position in
 // lat/long
 wax.mm.latlngtooltip = function(map) {
-    var mm = com.modestmaps,
-        tt, // tooltip
+    var tt, // tooltip
         _down = false,
         latlng = {};
 
     function getMousePoint(e) {
         // start with just the mouse (x, y)
-        var point = new mm.Point(e.clientX, e.clientY);
+        var point = new MM.Point(e.clientX, e.clientY);
         // correct for scrolled document
         point.x += document.body.scrollLeft + document.documentElement.scrollLeft;
         point.y += document.body.scrollTop + document.documentElement.scrollTop;
@@ -50,23 +49,23 @@ wax.mm.latlngtooltip = function(map) {
         tt.innerHTML = fmt;
         pt.scale = pt.width = pt.height = 1;
         pt.x += 10;
-        mm.moveElement(tt, pt);
+        MM.moveElement(tt, pt);
         map.parent.appendChild(tt);
     }
 
     latlng.add = function() {
-        mm.addEvent(map.parent, 'mousemove', onMove);
-        mm.addEvent(map.parent, 'mousedown', onDown);
-        mm.addEvent(map.parent, 'mouseup', onUp);
+        MM.addEvent(map.parent, 'mousemove', onMove);
+        MM.addEvent(map.parent, 'mousedown', onDown);
+        MM.addEvent(map.parent, 'mouseup', onUp);
         tt = document.createElement('div');
         tt.className = 'wax-latlngtooltip';
         return this;
     };
 
     latlng.remove = function() {
-        mm.removeEvent(map.parent, 'mousemove', onMove);
-        mm.removeEvent(map.parent, 'mousedown', onDown);
-        mm.removeEvent(map.parent, 'mouseup', onUp);
+        MM.removeEvent(map.parent, 'mousemove', onMove);
+        MM.removeEvent(map.parent, 'mousedown', onDown);
+        MM.removeEvent(map.parent, 'mouseup', onUp);
         return this;
     };
 

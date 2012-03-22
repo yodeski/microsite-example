@@ -1,6 +1,6 @@
 {
     "name": "wax",
-    "version": "4.1.5",
+    "version": "6.0.0-beta1",
     "description": "Tools for improving web maps.",
     "repository": {
         "type": "git",
@@ -21,9 +21,8 @@
       "type": "BSD"
     }],
     "devDependencies": {
-      "jshint": "0.2.3",
+      "jshint": "0.5.x",
       "uglify-js": "1.0.x",
-      "docco": "0.3.x",
       "banner": "0.0.x"
     }
 }

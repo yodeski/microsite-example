@@ -88,28 +88,28 @@
   <div id="mymap"></div>
   <script type='text/javascript'>
     // Declare variables
-    var m, mm, interaction;
+    var map, interaction;
     // Set initial map layer
     var layer = 'mapbox.tornadoes-2010';
     // Static part of the map url
     var urlBase = 'http://api.tiles.mapbox.com/v3/mapbox.mapbox-streets,';
     // Full map url
     var url = urlBase + layer + '.jsonp';
-    
+
     wax.tilejson(url, function(tilejson) {
       // Set minimum zoom limit
       tilejson.minzoom = 4;
       // Set maximum zoom limit
       tilejson.maxzoom = 8;
-      mm = com.modestmaps;
-      m = new mm.Map('mymap',
-      new wax.mm.connector(tilejson));
-      wax.mm.zoomer(m, tilejson).appendTo(m.parent);
-      interaction = wax.mm.interaction(m, tilejson);
-      wax.mm.attribution(m, tilejson).appendTo(m.parent);
-      m.setCenterZoom(new mm.Location(39, -98), 5);
+      map = new MM.Map('mymap',
+        new wax.mm.connector(tilejson));
+      wax.mm.zoomer(map, tilejson).appendTo(map.parent);
+      interaction = wax.mm.interaction().map(map).tilejson(tilejson)
+        .on(wax.tooltip().parent(map.parent).events());
+      wax.mm.attribution(map, tilejson).appendTo(map.parent);
+      map.setCenterZoom({ lat: 39, lon: -98 }, 5);
     });
-    
+
     $('#sidebar ul.layerswitch a').click(function (e) {
       e.preventDefault();
       layer = this.id;
@@ -117,13 +117,12 @@
       $(this).addClass('active');
       refreshMap();
     });
-    
+
     function refreshMap() {
       url = urlBase + layer + '.jsonp';
       wax.tilejson(url, function(tilejson) {
-        m.setProvider(new wax.mm.connector(tilejson));
-        interaction.remove();
-        interaction = wax.mm.interaction(m, tilejson);
+        map.setLayerAt(0, new wax.mm.connector(tilejson));
+        interaction.tilejson(tilejson);
       });
     }
   </script>
