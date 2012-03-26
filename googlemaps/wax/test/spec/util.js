@@ -4,6 +4,7 @@ describe('util', function() {
   //   song = new Song();
   // });
 
+  /*
   it('should be able to recognize strings', function() {
       expect(wax.util.isString('Tom')).toEqual(true);
       expect(wax.util.isString(2)).toEqual(false);
@@ -18,6 +19,7 @@ describe('util', function() {
       expect(wax.util.keys({a: 2})).toEqual(['a']);
       expect(wax.util.keys({})).toEqual([]);
   });
+  */
 
   //describe("when song has been paused", function() {
   //  beforeEach(function() {

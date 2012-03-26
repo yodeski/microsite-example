@@ -1,5 +1,18 @@
 ## Changelog
 
+## 6.0.0
+
+* Event dispatcher for tooltips and other functionality
+* Rewritten tooltip functionality
+* Space optimizations to reduce overall size of library
+* Mature implementation of movetip.js
+* Now includes bean for events
+* Moved all external deps to lib/*
+
+## 5.0.0-alpha*
+
+* Initial support for Modest Maps 1.0.0-alpha
+
 ## 4.1.5
 
 * Fixes a bug in touch interaction controls discovered and fixed by @lxbarth

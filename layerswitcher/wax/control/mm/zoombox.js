@@ -7,14 +7,13 @@ wax.mm = wax.mm || {};
 wax.mm.zoombox = function(map) {
     // TODO: respond to resize
     var zoombox = {},
-        mm = com.modestmaps,
         drawing = false,
         box,
         mouseDownPoint = null;
 
     function getMousePoint(e) {
         // start with just the mouse (x, y)
-        var point = new mm.Point(e.clientX, e.clientY);
+        var point = new MM.Point(e.clientX, e.clientY);
         // correct for scrolled document
         point.x += document.body.scrollLeft + document.documentElement.scrollLeft;
         point.y += document.body.scrollTop + document.documentElement.scrollTop;
@@ -39,8 +38,8 @@ wax.mm.zoombox = function(map) {
         map.setExtent([l1, l2]);
 
         box.style.display = 'none';
-        mm.removeEvent(map.parent, 'mousemove', mouseMove);
-        mm.removeEvent(map.parent, 'mouseup', mouseUp);
+        MM.removeEvent(map.parent, 'mousemove', mouseMove);
+        MM.removeEvent(map.parent, 'mouseup', mouseUp);
 
         map.parent.style.cursor = 'auto';
     }
@@ -54,11 +53,11 @@ wax.mm.zoombox = function(map) {
         box.style.left = mouseDownPoint.x + 'px';
         box.style.top = mouseDownPoint.y + 'px';
 
-        mm.addEvent(map.parent, 'mousemove', mouseMove);
-        mm.addEvent(map.parent, 'mouseup', mouseUp);
+        MM.addEvent(map.parent, 'mousemove', mouseMove);
+        MM.addEvent(map.parent, 'mouseup', mouseUp);
 
         map.parent.style.cursor = 'crosshair';
-        return mm.cancelEvent(e);
+        return MM.cancelEvent(e);
     }
 
     function mouseMove(e) {
@@ -78,7 +77,7 @@ wax.mm.zoombox = function(map) {
             box.style.top = mouseDownPoint.y + 'px';
         }
         box.style.height = Math.abs(point.y - mouseDownPoint.y) + 'px';
-        return mm.cancelEvent(e);
+        return MM.cancelEvent(e);
     }
 
     zoombox.add = function(map) {
@@ -89,13 +88,13 @@ wax.mm.zoombox = function(map) {
         box.id = map.parent.id + '-zoombox-box';
         box.className = 'zoombox-box';
         map.parent.appendChild(box);
-        mm.addEvent(map.parent, 'mousedown', mouseDown);
+        MM.addEvent(map.parent, 'mousedown', mouseDown);
         return this;
     };
 
     zoombox.remove = function() {
         map.parent.removeChild(box);
-        mm.removeEvent(map.parent, 'mousedown', mouseDown);
+        MM.removeEvent(map.parent, 'mousedown', mouseDown);
     };
 
     return zoombox.add(map);
