@@ -25,6 +25,7 @@ $(function() {
 		      buildStats(o.data);
 		    },
 		    off: function() {
+		      $('#mymap').css('cursor','default');
 		      resetStats();
 		    }
 		  });
